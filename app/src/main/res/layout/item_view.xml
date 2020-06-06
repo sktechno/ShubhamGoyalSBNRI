@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.sk.shubhamgoyalsbnri.model.User" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_FFFFFF"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/name"
+            style="@style/AppTheme.Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{model.name}"
+            android:textColor="@color/textColorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="start"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="name" />
+
+        <TextView
+            android:id="@+id/desc"
+            style="@style/AppTheme.Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="@dimen/dimen_8dp"
+            android:text="@{model.description}"
+            android:textColor="@color/textColorSec"
+            app:layout_constraintEnd_toStartOf="@+id/issue"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name" />
+
+        <TextView
+            android:id="@+id/issue"
+            style="@style/AppTheme.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{``+model.openIssuesCount}"
+            app:layout_constraintBottom_toBottomOf="@+id/desc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/desc"
+            tools:text="open issues " />
+
+        <TextView
+            android:id="@+id/lincense"
+            style="@style/AppTheme.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:text="@{model.license.name}"
+            app:layout_constraintEnd_toStartOf="@+id/permission"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginEnd="@dimen/dimen_8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/desc"
+            tools:text="license" />
+
+        <TextView
+            android:id="@+id/permission"
+            style="@style/AppTheme.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{``+(model.permissions.admin?`Admin`:``)+``+(model.permissions.push?` Push`:``)+``+(model.permissions.pull?` Pull`:``)}"
+            app:layout_constraintBottom_toBottomOf="@+id/lincense"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/desc"
+            tools:text="permissions" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
